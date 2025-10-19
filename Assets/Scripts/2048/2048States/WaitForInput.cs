@@ -1,17 +1,29 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class WaitForInput : BaseScript
+public class WaitForInput : BaseStates
 {
-    public override void OnEnter(ManageStates manage)
+
+    [SerializeField] private int _width, _height;
+
+    [SerializeField] private Tile tilePrefab;
+
+    [SerializeField] private Transform cam;
+    [SerializeField] private Tile2 tile2;
+
+
+
+    public override void OnEnter(GameManager manage)
     {
 
     }
-    public override void OnExit(ManageStates manage)
+    
+    public override void OnExit(GameManager manage)
     {
 
     }
-    public override void UpdateState(ManageStates manage)
+    public override void UpdateState(GameManager manage)
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -33,6 +45,11 @@ public class WaitForInput : BaseScript
             Debug.Log("start!");
 
         }
+
+    }
+
+    public override void HandleInput(GameManager manage , MoveDirection direction)
+    {
 
     }
 

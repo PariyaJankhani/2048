@@ -1,16 +1,21 @@
 using UnityEngine;
 
-public class ProcessPosibleMoves: BaseScript
+public class ProcessPosibleMoves: BaseStates
 {
-    public override void OnEnter(ManageStates manage)
+    public override void OnEnter(GameManager manage)
     {
 
     }
-    public override void OnExit(ManageStates manage)
+    public override void OnExit(GameManager manage)
     {
 
     }
-    public override void UpdateState(ManageStates manage)
+    public override void UpdateState(GameManager manage)
+    {
+
+    }
+
+    public override void HandleInput(GameManager manage, MoveDirection direction)
     {
 
     }

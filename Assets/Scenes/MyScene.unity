@@ -128,7 +128,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 200441878}
-  - component: {fileID: 200441879}
+  - component: {fileID: 200441880}
+  - component: {fileID: 200441881}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -151,7 +152,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &200441879
+--- !u!114 &200441880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200441876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40936900824d93e49b07fdfe558d8a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 881485154}
+  tile2Prefab: {fileID: 7906893015756193298, guid: f355bd6ebb2e67f4fad6d4ef583be0b3, type: 3}
+  cam: {fileID: 1220025034}
+--- !u!114 &200441881
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,13 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb38c57893ecb5459a8055be6f220f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 4
-  _height: 4
-  tilePrefab: {fileID: 881485154}
-  cam: {fileID: 1220025034}
-  tile2: {fileID: 7906893015756193298, guid: f355bd6ebb2e67f4fad6d4ef583be0b3, type: 3}
-  xrange: 1.5
-  yrange: 1
+  gridManager: {fileID: 200441880}
 --- !u!1 &881485153 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4734518359129600800, guid: ef02dc0cef280094ca3c5811ef1ad471, type: 3}
@@ -432,6 +442,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1560b584e080345a6979db22e31f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: {fileID: 0}
+  wait: {fileID: 0}
+  mono: {fileID: 0}
+  posibleMoves: {fileID: 0}
+  completeTheGrid: {fileID: 0}
+  CheckComplete: {fileID: 0}
 --- !u!4 &1233808413
 Transform:
   m_ObjectHideFlags: 0
