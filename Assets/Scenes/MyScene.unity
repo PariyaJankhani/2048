@@ -180,6 +180,8 @@ MonoBehaviour:
   tilePrefab: {fileID: 881485158}
   tile2Prefab: {fileID: 5389638070739906846, guid: f355bd6ebb2e67f4fad6d4ef583be0b3, type: 3}
   cam: {fileID: 1220025034}
+  Grid_sizex: 5
+  Grid_sizey: 5
 --- !u!114 &881485158 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6998445330621378602, guid: ef02dc0cef280094ca3c5811ef1ad471, type: 3}
