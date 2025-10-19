@@ -1,17 +1,20 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-//using static GridData;
+using static GridData;
 
 public class GridManager : MonoBehaviour
 {
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private Tile2 tile2Prefab;
     [SerializeField] private Transform cam;
+    [SerializeField] public  int Grid_sizex = 4;
+    [SerializeField] public  int Grid_sizey = 4;
+    public int[,] logicalgrid;
+
     Vector2 randomPosition;
-
     public GridData GridData { get; private set; }
-
+    public GameManager gameManager { get; private set; }
     public void Initialize(GridData data)
     {
         this.GridData = data;
@@ -19,31 +22,33 @@ public class GridManager : MonoBehaviour
 
     public void GenerateGrid()
     {
-        for (int x = 0; x < GridData.Grid_size; x++) {
+        for (int x = 0; x < Grid_sizex; x++) {
 
-            for (int y = 0; y < GridData.Grid_size; y++) {
+            for (int y = 0; y < Grid_sizey; y++) {
 
+                
                 Tile SpawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity);
                 SpawnedTile.name = $"tile{x} {y}";
 
             }
 
         }
-        cam.transform.position = new Vector3((float)GridData.Grid_size / 2 - 0.5f, GridData.Grid_size / 2 - 1f, -10);
+        cam.transform.position = new Vector3((float)Grid_sizex / 2 - 0.5f, Grid_sizey / 2 - 1f, -10);
 
     }
 
     public void SpawnRandomTile()
     {
+       
+    List<Vector2Int> emptyPositions = new List<Vector2Int>();
+        logicalgrid= new int[Grid_sizex, Grid_sizey];
 
-        List<Vector2Int> emptyPositions = new List<Vector2Int>();
-
-        for (int x = 0; x < GridData.Grid_size; x++)
+        for (int x = 0; x < Grid_sizex; x++)
         {
-            for (int y = 0; y < GridData.Grid_size; y++)
+            for (int y = 0; y < Grid_sizey; y++)
             {
 
-                if (GridData.LogicGrid[x, y] == 0)
+                if (logicalgrid[x,y] == 0)
                 {
                     emptyPositions.Add(new Vector2Int(x, y));
                 }
@@ -60,19 +65,17 @@ public class GridManager : MonoBehaviour
         int randomIndex = Random.Range(0, emptyPositions.Count);
         Vector2Int pos = emptyPositions[randomIndex];
 
-
-        
-
-
+        logicalgrid[pos.x, pos.y] = 1;
         var spawnedTile2 = Instantiate(tile2Prefab, new Vector3(pos.x, pos.y), Quaternion.identity);
        
         GridData.physicalGrid[pos.x, pos.y] = spawnedTile2;
+
 
        
     }
 
 
-    private List<int> ProcessTile(List<int> line)
+    public List<int> ProcessTile(List<int> line)
     {
         List<int> nonezerotile = new List<int>();
         foreach (int tilevalue in line) 
@@ -106,17 +109,30 @@ public class GridManager : MonoBehaviour
 
         }
 
-        int zerosToadd = GridData.Grid_size - mergedline.Count;
-        for(int i=0 ;  i < zerosToadd; i++)
-        {
-            mergedline.Add(0);
-        }
+        //int zerosToadd = Grid_size - mergedline.Count;
+        //for(int i=0 ;  i < zerosToadd; i++)
+        //{
+        //    mergedline.Add(0);
+        //}
 
+        
         return mergedline;
 
     }
 
+    public void SavePosition()
+    {
+        //get position from tile2
+        //get positions from list
+        //save current position
 
+       List<int> tilepl = new List<int>();
+      
+        
+
+
+
+    }
 
 
 }

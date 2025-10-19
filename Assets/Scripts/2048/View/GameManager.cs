@@ -1,13 +1,12 @@
-﻿
+﻿using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     private BaseStates currentState;
     [SerializeField] public GridManager gridManager;
-    [SerializeField] private GridData gridData = new GridData();
-
-
+    [SerializeField] public GridData gridData;
+    
     public void Start()
     {
         if (gridManager == null)

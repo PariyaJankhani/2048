@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3119748479552004766}
   - component: {fileID: 7678389192756942091}
-  - component: {fileID: 7906893015756193298}
+  - component: {fileID: 5389638070739906846}
+  - component: {fileID: 7324292944297305381}
   m_Layer: 0
   m_Name: Tile_2
   m_TagString: Untagged
@@ -27,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 4734518359129600800}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.9, y: -1.86, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5824698963054760574}
@@ -89,7 +90,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7906893015756193298
+--- !u!114 &5389638070739906846
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,11 +99,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4734518359129600800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0b9ef8eba4bb65409b9d6b074f480ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 49caef83504053040b81d04a93cd58b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueText: {fileID: 0}
-  tileRenderer: {fileID: 0}
+  GridManager: {fileID: 0}
+  Targetposition: {x: 0, y: 0, z: 0}
+--- !u!114 &7324292944297305381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4734518359129600800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fd30c12a8018f49b39a2c17c2dcd73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 2314583107851630699, guid: 60bf42847b9be3446a08e64e04e2095c, type: 3}
+  duration: 0.5
 --- !u!1 &5432456643444943948
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,8 +154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 46.709133, y: 84.91332}
-  m_SizeDelta: {x: 96, y: 170}
+  m_AnchoredPosition: {x: 0.0001, y: -0.0078}
+  m_SizeDelta: {x: 0.994, y: 0.991}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &9003934044235917520
 Canvas:
@@ -237,11 +252,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5824698963054760574}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.3069992, y: 0.083999634}
-  m_SizeDelta: {x: 1, y: 1}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!222 &7547516436466688099
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -335,7 +350,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0.96396995, z: 0, w: 0.9422548}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

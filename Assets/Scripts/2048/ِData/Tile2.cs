@@ -1,14 +1,24 @@
 using UnityEngine;
 using TMPro;
+using NUnit.Framework;
+using System.Collections.Generic;
 public class Tile2 : MonoBehaviour
 {
-  
-   
-    private Vector3 targetPositin;
 
+    public GridManager GridManager;
+
+    public Vector3 Targetposition;
+    
     
 
-   
+    
+      public void ProcessTile()
+    {
+        List<int> targetpl = new List<int>();
+
+    }
+    
+
 }
 
 
