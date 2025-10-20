@@ -4,7 +4,9 @@ public class movetile2 : MonoBehaviour
 {
     [SerializeField] Transform targetTransform;
     [SerializeField] float duration;
-    
+
+    public GameManager gameManager { get; private set; }
+
 
     public GridManager gridManager { get; private set; }
     
@@ -15,33 +17,33 @@ public class movetile2 : MonoBehaviour
     }
     private void Update()
     {
+       
+        //if (Input.GetKeyDown(KeyCode.RightArrow)) MoveRight();
 
-        if (Input.GetKeyDown(KeyCode.RightArrow)) MoveRight();
+        //void MoveRight()
+        //{
 
-        void MoveRight()
-        {
+        //    LeanTween.moveX(gameObject, transform.position.x , duration);
 
-            LeanTween.moveX(gameObject, transform.position.x , duration);
+        //}
 
-        }
+        //if (Input.GetKeyDown(KeyCode.LeftArrow)) MoveLeft();
+        //void MoveLeft()
+        //{
+        //    LeanTween.moveX(gameObject, transform.position.x , duration);
+        //}
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) MoveLeft();
-        void MoveLeft()
-        {
-            LeanTween.moveX(gameObject, gridManager.Grid_sizex  , duration);
-        }
+        //if (Input.GetKeyDown(KeyCode.UpArrow)) MoveUp();
+        //void MoveUp() 
+        //{
+        //    LeanTween.moveY(gameObject, transform.position.y , duration);
+        //}
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)) MoveUp();
-        void MoveUp() 
-        {
-            LeanTween.moveY(gameObject, gridManager.Grid_sizey , duration);
-        }
-
-        if (Input.GetKeyDown(KeyCode.DownArrow)) MoveDown();
-        void MoveDown()
-        {
-            LeanTween.moveY(gameObject, gridManager.Grid_sizey , duration);
-        }
+        //if (Input.GetKeyDown(KeyCode.DownArrow)) MoveDown();
+        //void MoveDown()
+        //{
+        //    LeanTween.moveY(gameObject, transform.position.y , duration);
+        //}
 
     }
 }

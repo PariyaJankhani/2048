@@ -2885,10 +2885,7 @@ public class LeanTween : MonoBehaviour {
         }
     }
 
-    internal static void moveX(GameObject gameObject, object x, float duration)
-    {
-        throw new NotImplementedException();
-    }
+
 } // End LeanTween class
 
 public class LTUtility {

@@ -1,25 +1,48 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GridData[,] gridList;
+    //------------------
+
     private BaseStates currentState;
     [SerializeField] public GridManager gridManager;
-    [SerializeField] public GridData gridData;
+    private GridData gridData;
     
     public void Start()
     {
+        gridData = new GridData();
+
+        initGridData();
+
+        gridManager.GenerateGrid();
+
         if (gridManager == null)
             gridManager = GetComponent<GridManager>();
 
-        if (gridManager != null && gridData != null)
-        {
+        //if (gridManager != null && gridData != null)
+        //{
+            //gridManager.GenerateGrid();
             gridManager.Initialize(gridData);
-            gridManager.GenerateGrid();
-        }
+           
+        //}
 
        
         ChangeState(gameObject.AddComponent<GenerateInitialState>());
+    }
+    private void initGridData()
+    {
+        gridData = new GridData();
+        //-------------------------
+        
+        //-------------------------
+
+        //-------------------------
+
+        //-------------------------
+
     }
 
     public void Update()
