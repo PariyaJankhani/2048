@@ -2,16 +2,20 @@ using JetBrains.Annotations;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using static GridData;
 
 public class GridManager : MonoBehaviour
 {
+    
+
+
 
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private Tile2 tile2Prefab;
     [SerializeField] private Transform cam;
-    [SerializeField] public static int Grid_sizex = 4;
-    [SerializeField] public static int Grid_sizey = 4;
+    [SerializeField] public int Grid_sizex = 4;
+    [SerializeField] public int Grid_sizey = 4;
     public int[,] logicalgrid;
     Vector2 randomPosition;
     public GridData GridData{ get; private set; }
@@ -19,63 +23,63 @@ public class GridManager : MonoBehaviour
     public void Initialize(GridData data)
     {
         
-        Debug.Log(GridData == data);
+        //Debug.Log(GridData == data);
 
-        this.GridData = data;
-        Debug.Log(GridData==null);
-        Debug.Log(GridData.physicalGrid == null);
-        GridData.physicalGrid = new Tile2[Grid_sizex,Grid_sizey];
-        GridData.PhysicalGrid = new Tile[Grid_sizex, Grid_sizey];
+        //this.GridData = data;
+        //Debug.Log(GridData==null);
+        //Debug.Log(GridData.physicalGrid == null);
+        //GridData.physicalGrid = new Tile2[Grid_sizex,Grid_sizey];
+        //GridData.PhysicalGrid = new Tile[Grid_sizex, Grid_sizey];
     }
 
     
 
 
-    public void GenerateGrid()
-    {
-        for (int x = 0; x < Grid_sizex; x++) {
+    //public void GenerateGrid()
+    //{
+    //    for (int x = 0; x < Grid_sizex; x++) {
 
-            for (int y = 0; y < Grid_sizey; y++) {
+    //        for (int y = 0; y < Grid_sizey; y++) {
 
                 
-                Tile SpawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity);
-                SpawnedTile.name = $"tile{x} {y}";
+    //            Tile SpawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity);
+    //            SpawnedTile.name = $"tile{x} {y}";
 
-            }
+    //        }
 
-        }
-        cam.transform.position = new Vector3((float)Grid_sizex / 2 - 0.5f, Grid_sizey / 2 - 1f, -10);
-    }
+    //    }
+    //    cam.transform.position = new Vector3((float)Grid_sizex / 2 - 0.5f, Grid_sizey / 2 - 1f, -10);
+    //}
 
-    public void SpawnRandomTile()
-    {
-        logicalgrid = new int[Grid_sizex, Grid_sizey];
-        List<Vector2Int> emptyPositions = new List<Vector2Int>();
+    //public void SpawnRandomTile()
+    //{
         
+    //    logicalgrid = new int[Grid_sizex, Grid_sizey];
+    //    List<Vector2Int> emptyPositions = new List<Vector2Int>();
 
-        for (int x = 0; x < Grid_sizex; x++)
-        {
-            for (int y = 0; y < Grid_sizey; y++)
-            {
+    //    for (int x = 0; x < Grid_sizex; x++)
+    //    {
+    //        for (int y = 0; y < Grid_sizey; y++)
+    //        {
 
-                if (logicalgrid[x,y] == 0)
-                {
-                    emptyPositions.Add(new Vector2Int(x, y));
-                }
-            }
-        }
+    //            if (logicalgrid[x,y] == 0)
+    //            {
+    //                emptyPositions.Add(new Vector2Int(x, y));
+    //            }
+    //        }
+    //    }
 
-        if (emptyPositions.Count == 0)
-        {
-            Debug.Log("No empty spots left. Game Over check needed.");
-            return;
-        }
+    //    if (emptyPositions.Count == 0)
+    //    {
+    //        Debug.Log("No empty spots left. Game Over check needed.");
+    //        return;
+    //    }
 
-        int randomIndex = Random.Range(0, emptyPositions.Count);
-        Vector2Int pos = emptyPositions[randomIndex];
-        logicalgrid[pos.x, pos.y] = 1;
-        var spawnedTile2 = Instantiate(tile2Prefab, new Vector3(pos.x, pos.y), Quaternion.identity);
-        GridData.physicalGrid[pos.x, pos.y] = spawnedTile2;
+    //    int randomIndex = Random.Range(0, emptyPositions.Count);
+    //    Vector2Int pos = emptyPositions[randomIndex];
+    //    logicalgrid[pos.x, pos.y] = 1;
+    //    var spawnedTile2 = Instantiate(tile2Prefab, new Vector3(pos.x, pos.y), Quaternion.identity);
+    //    GridData.physicalGrid[pos.x, pos.y] = spawnedTile2;
         //Debug.Log(GridData == null);
         //Debug.Log(GridData.physicalGrid == null);
         //Debug.Log(GridData.physicalGrid == null);
@@ -84,13 +88,19 @@ public class GridManager : MonoBehaviour
         //Debug.Log(GridData.physicalGrid.GetLength(1));
         //Debug.Log(GridData.physicalGrid[pos.x, pos.y] == null);
 
-
+        
 
 
 
     }
 
+    
 
+
+    //void position()
+    //{
+    //    List<GridData> alltiles; 
+    //}
     //public List<int> ProcessTile(List<int> line)
     //{
     //    List<int> nonezerotile = new List<int>();
@@ -151,5 +161,5 @@ public class GridManager : MonoBehaviour
     //}
 
 
-}
+
 

@@ -8,6 +8,10 @@ public class GridData
     public Tile tile;
     public Tile2 tile2;
 
+    public Vector3 gridPosition;
+
+
+
     //----------------------------
     public static GridManager gridManager;
 

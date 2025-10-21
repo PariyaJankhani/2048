@@ -129,7 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 200441878}
   - component: {fileID: 200441879}
-  - component: {fileID: 200441880}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -164,24 +163,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd6c33c813a2554b84d78726bd83aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridManager: {fileID: 200441880}
---- !u!114 &200441880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 200441876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40936900824d93e49b07fdfe558d8a84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   tilePrefab: {fileID: 6998445330621378602, guid: ef02dc0cef280094ca3c5811ef1ad471, type: 3}
-  tile2Prefab: {fileID: 5389638070739906846, guid: f355bd6ebb2e67f4fad6d4ef583be0b3, type: 3}
+  Tile2prefab: {fileID: 5389638070739906846, guid: f355bd6ebb2e67f4fad6d4ef583be0b3, type: 3}
   cam: {fileID: 1220025034}
-  Grid_sizex: 4
-  Grid_sizey: 4
+  Gridx: 4
+  Gridy: 4
 --- !u!1 &1212213990
 GameObject:
   m_ObjectHideFlags: 0
