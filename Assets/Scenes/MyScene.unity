@@ -166,8 +166,9 @@ MonoBehaviour:
   tilePrefab: {fileID: 6998445330621378602, guid: ef02dc0cef280094ca3c5811ef1ad471, type: 3}
   Tile2prefab: {fileID: 5389638070739906846, guid: f355bd6ebb2e67f4fad6d4ef583be0b3, type: 3}
   cam: {fileID: 1220025034}
-  Gridx: 4
-  Gridy: 4
+  Gridx: 5
+  Gridy: 5
+  currentDirection: 0
 --- !u!1 &1212213990
 GameObject:
   m_ObjectHideFlags: 0

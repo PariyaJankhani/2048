@@ -5,6 +5,7 @@ public class ProcessPosibleMoves: BaseStates
 {
     Tile tile;
     Tile2 tile2;
+    public int[,] logicalgrid;
     public override void OnEnter(GameManager manage)
     {
         Debug.Log("here is process possible moves");
@@ -15,31 +16,30 @@ public class ProcessPosibleMoves: BaseStates
     }
     public override void UpdateState(GameManager manage)
     {
-      
-       if(manage.currentDirection == MoveDirection.Up)
-        {
-            for(int i = 0; i< manage.Gridy; i++)
-            {
-                if (tile == null)
-                {
-                  
-                }
-            }
-        }
-       if(manage.currentDirection == MoveDirection.Down)
-        {
+              logicalgrid = new int[manage.Gridx, manage.Gridy];
 
-        }
-       if(manage.currentDirection== MoveDirection.Left)
-        {
 
-        }
-       if(manage.currentDirection== MoveDirection.Right)
-        {
+        //   if(manage.currentDirection == MoveDirection.Up)
+        //    {
+        //        for(int i = 0; i< manage.Gridy; i++)
+        //        {
 
-        }
+        //        }
+        //    }
+        //   if(manage.currentDirection == MoveDirection.Down)
+        //    {
 
-        manage.ChangeState(manage.movingBlocks);
+        //    }
+        //   if(manage.currentDirection== MoveDirection.Left)
+        //    {
+
+        //    }
+        //   if(manage.currentDirection== MoveDirection.Right)
+        //    {
+
+        //    }
+
+        //    manage.ChangeState(manage.movingBlocks);
     }
 
     public override void HandleInput(GameManager manage, MoveDirection direction)
