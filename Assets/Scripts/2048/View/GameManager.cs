@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
         //done--
 
         // و رفتن به استیت process possible moves
-
+        //done
 
     }
 
