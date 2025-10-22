@@ -14,14 +14,20 @@ public class GameManager : MonoBehaviour
     public GridData[,] gridList;
     [SerializeField] public int Gridx;
     [SerializeField] public int Gridy;
-    private BaseStates currentState;
 
+    public BaseStates currentState;
+    public WaitForInput input = new WaitForInput();
+    public ProcessPosibleMoves posibleMoves = new ProcessPosibleMoves();
+    public MovingBlocks movingBlocks = new MovingBlocks();
+    public CompleteTheGrid completeTheGrid = new CompleteTheGrid();
+    public CheckComplete checkComplete = new CheckComplete();
 
+    public MoveDirection currentDirection;
 
     //------------------
     public  GameManager instance { get; private set; }
-/*    [SerializeField] public GridManager gridManager;
-    private GridData gridData;*/
+    /*    [SerializeField] public GridManager gridManager;
+        private GridData gridData;*/
 
     public void Awake()
     {
@@ -33,10 +39,11 @@ public class GameManager : MonoBehaviour
     {
         /*        gridData = new GridData();
         */
+       
         initGridData();
-         void ChangeState(WaitForInput newstate){
+        ChangeState(input);
 
-        }
+
 
         /*        gridManager.GenerateGrid();
 
@@ -111,8 +118,8 @@ public class GameManager : MonoBehaviour
         {
             tile2 = tile
         };
-
-
+        
+        
         // رفتن به استیت wait for input
         // ساخت enum برای جهت های input 
 
@@ -121,9 +128,10 @@ public class GameManager : MonoBehaviour
         // گرفتن input
         // در استیت
         // wait for input
+
         // و ذخیره مقدار
         // enum
-
+         
         //done--
 
         // و رفتن به استیت process possible moves
@@ -134,62 +142,58 @@ public class GameManager : MonoBehaviour
 
     public void ChangeState(BaseStates newState)
     {
-        if (currentState != null)
-        {
-            currentState.OnExit(this);
+        currentState = input;
+        currentState.OnEnter(this);
 
-            Destroy(currentState);
-        }
 
-        currentState = newState;
-
-        if (currentState != null)
-            currentState.OnEnter(this);
     }
 
-    
+
+    private void Update()
+    {
+        
+    }
+
+
+
     //-------------------------
 
     //-------------------------
 }
 
 
-/*    List<Vector3Int> GetAllTilePositions()
-    {
-        List<Vector3Int> poslist = new List<Vector3Int>();
-        foreach (Vector3Int pos in levelTilemap.cellBounds.allPositionsWithin)
-        {
-            if (levelTilemap.HasTile(pos))
-            {
-                poslist.Add(pos);
-            }
+//List<Vector3Int> GetAllTilePositions()
+//{
+//    List<Vector3Int> poslist = new List<Vector3Int>();
+//    foreach (Vector3Int pos in levelTilemap.cellBounds.allPositionsWithin)
+//    {
+//        if (levelTilemap.HasTile(pos))
+//        {
+//            poslist.Add(pos);
+//        }
 
-        }
+//    }
 
-        if (poslist.Count != 0)
-        {
-            gridData.gridPosition = GetAllTilePositions(); 
-        }
-        Debug.Log(GetAllTilePositions());
-        return poslist;
-
-
-    }
-
-    public void Update()
-    {
-        currentState?.UpdateState(this);
+//    if (poslist.Count != 0)
+//    {
+//        gridData.gridPosition = GetAllTilePositions();
+//    }
+//    Debug.Log(GetAllTilePositions());
+//    return poslist;
 
 
-        if (currentState != null)
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-                currentState.HandleInput(this, MoveDirection.Up);
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
-                currentState.HandleInput(this, MoveDirection.Down);
+//}
+        
+       
 
-        }
-    }
-*/
 
-    
+
+
+   
+
+
+
+
+
+
+
