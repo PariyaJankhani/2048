@@ -24,11 +24,28 @@ public class GameManager : MonoBehaviour
 
     public MoveDirection currentDirection;
 
+    private List<IObserver> observers = new List<IObserver>(); 
+
     //------------------
     public  GameManager instance { get; private set; }
     /*    [SerializeField] public GridManager gridManager;
         private GridData gridData;*/
+    public void AddObserver(IObserver observer)
+    {
+        observers.Add(observer);
+    }
 
+    public void RemoveObserver(IObserver observer)
+    {
+        observers.Remove(observer);
+    }
+    public void NotifyObserver(string action)
+    {
+        observers.ForEach((observer) =>
+        {
+            observer.OnNotify();
+        });
+    }
     public void Awake()
     {
         instance = this;
@@ -142,8 +159,14 @@ public class GameManager : MonoBehaviour
 
     public void ChangeState(BaseStates newState)
     {
+
+       
         currentState = input;
         currentState.OnEnter(this);
+       
+            
+
+        
 
 
     }
@@ -151,7 +174,19 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
+        input.HandleInput(this);
+        if (currentState == input)
+        {
+            currentState = posibleMoves;
+            currentState.OnEnter(this);
+        }
+
+        if(currentState == posibleMoves)
+        {
+            currentState = movingBlocks;
+            currentState.OnEnter(this);
+        }
+
     }
 
 

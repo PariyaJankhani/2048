@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class finally2048: BaseStates
+public class finally2048 : BaseStates
 {
     public override void OnEnter(GameManager manage)
     {
@@ -15,8 +15,4 @@ public class finally2048: BaseStates
 
     }
 
-    public override void HandleInput(GameManager manage, MoveDirection direction)
-    {
-
-    }
-}
+}  

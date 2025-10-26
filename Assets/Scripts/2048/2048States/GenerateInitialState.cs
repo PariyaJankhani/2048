@@ -16,7 +16,5 @@ public class GenerateInitialState : BaseStates
     public override void UpdateState(GameManager manager) { 
     
     }
-    public override void HandleInput(GameManager manager, MoveDirection direction) {
     
-    }
 }

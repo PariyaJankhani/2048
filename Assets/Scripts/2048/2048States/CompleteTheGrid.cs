@@ -15,8 +15,5 @@ public class CompleteTheGrid: BaseStates
 
     }
 
-    public override void HandleInput(GameManager manage, MoveDirection direction)
-    {
-
-    }
+   
 }

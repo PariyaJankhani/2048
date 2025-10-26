@@ -17,9 +17,6 @@ public class CheckComplete: BaseStates
 
     }
 
-    public override void HandleInput(GameManager manage, MoveDirection direction)
-    {
-
-    }
+   
 
 }

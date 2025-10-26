@@ -12,7 +12,7 @@ public class WaitForInput : BaseStates
     public override void OnEnter(GameManager manage)
     {
        
-        Debug.Log("wait for input state");
+       
 
     }
     
@@ -25,14 +25,11 @@ public class WaitForInput : BaseStates
 
     public override void UpdateState(GameManager manage)
     {
-       
-         
-        
-          
+
 
     }
 
-    public override void HandleInput(GameManager manage , MoveDirection direction)
+    public  void HandleInput(GameManager manage)
     {
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -43,23 +40,23 @@ public class WaitForInput : BaseStates
 
         }
 
-       else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             manage.currentDirection = MoveDirection.Down;
             manage.ChangeState(manage.posibleMoves);
             Debug.Log("down is pressed!");
         }
 
-       else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             manage.currentDirection = MoveDirection.Left;
             manage.ChangeState(manage.posibleMoves);
             Debug.Log("left is pressed!");
         }
 
-        else if(Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            manage.currentDirection= MoveDirection.Right;
+            manage.currentDirection = MoveDirection.Right;
             manage.ChangeState(manage.posibleMoves);
             Debug.Log("right is pressed!");
         }
