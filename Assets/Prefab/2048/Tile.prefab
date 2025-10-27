@@ -100,3 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556fa02a064797240b12ae9d7cc846f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridPosition: {x: 0, y: 0}
+  targetPos: {x: 0, y: 0}
+  merged: 0
+  value: 0

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour,IObserver
 {
 
     [SerializeField] private Tile tilePrefab;
@@ -24,28 +24,29 @@ public class GameManager : MonoBehaviour
 
     public MoveDirection currentDirection;
 
-    private List<IObserver> observers = new List<IObserver>(); 
 
     //------------------
     public  GameManager instance { get; private set; }
     /*    [SerializeField] public GridManager gridManager;
         private GridData gridData;*/
-    public void AddObserver(IObserver observer)
+
+
+    
+    public void OnNotify(MoveDirection direction)
     {
-        observers.Add(observer);
+        movingBlocks.OnEnter(this);
     }
 
-    public void RemoveObserver(IObserver observer)
+    public void OnEnable()
     {
-        observers.Remove(observer);
+        //playerSubject.AddObserver(this);
     }
-    public void NotifyObserver(string action)
+
+    public void OnDisable()
     {
-        observers.ForEach((observer) =>
-        {
-            observer.OnNotify();
-        });
+        //playerSubject.RemoveObserver(this);
     }
+
     public void Awake()
     {
         instance = this;
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
        
         initGridData();
         ChangeState(input);
-
+        
 
 
         /*        gridManager.GenerateGrid();
@@ -163,10 +164,15 @@ public class GameManager : MonoBehaviour
        
         currentState = input;
         currentState.OnEnter(this);
-       
-            
 
-        
+        //if(currentState == posibleMoves)
+        //{
+        //    currentState.OnEnter(this);
+        //}
+       
+
+
+
 
 
     }
@@ -174,18 +180,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        input.HandleInput(this);
+        
         if (currentState == input)
         {
-            currentState = posibleMoves;
-            currentState.OnEnter(this);
+            input.HandleInput(this);
+            currentState.OnExit(this);
         }
 
-        if(currentState == posibleMoves)
-        {
-            currentState = movingBlocks;
-            currentState.OnEnter(this);
-        }
+       
 
     }
 

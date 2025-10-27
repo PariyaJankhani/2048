@@ -29,13 +29,14 @@ public class WaitForInput : BaseStates
 
     }
 
-    public  void HandleInput(GameManager manage)
+    public void HandleInput(GameManager manage)
     {
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             manage.currentDirection = MoveDirection.Up;
             manage.ChangeState(manage.posibleMoves);
+            manage.posibleMoves.OnEnter(manage);
             Debug.Log("up is pressed!");
 
         }
@@ -44,6 +45,8 @@ public class WaitForInput : BaseStates
         {
             manage.currentDirection = MoveDirection.Down;
             manage.ChangeState(manage.posibleMoves);
+            manage.posibleMoves.OnEnter(manage);
+
             Debug.Log("down is pressed!");
         }
 
@@ -51,6 +54,8 @@ public class WaitForInput : BaseStates
         {
             manage.currentDirection = MoveDirection.Left;
             manage.ChangeState(manage.posibleMoves);
+            manage.posibleMoves.OnEnter(manage);
+
             Debug.Log("left is pressed!");
         }
 
@@ -58,6 +63,7 @@ public class WaitForInput : BaseStates
         {
             manage.currentDirection = MoveDirection.Right;
             manage.ChangeState(manage.posibleMoves);
+            manage.posibleMoves.OnEnter(manage);
             Debug.Log("right is pressed!");
         }
 
