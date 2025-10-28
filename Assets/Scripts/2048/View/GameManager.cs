@@ -7,9 +7,10 @@ using UnityEngine.Tilemaps;
 public class GameManager : MonoBehaviour,IObserver
 {
 
-    [SerializeField] private Tile tilePrefab;
+    [SerializeField] public Tile tilePrefab;
     [SerializeField] public Tile2 Tile2prefab;
     [SerializeField] private Transform cam;
+    
 
     public GridData[,] gridList;
     [SerializeField] public int Gridx;
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour,IObserver
     
     public void OnNotify(MoveDirection direction)
     {
-        movingBlocks.OnEnter(this);
+        //movingBlocks.OnEnter(this);
     }
 
     public void OnEnable()
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour,IObserver
     public void Awake()
     {
         instance = this;
+        
 
     }
 
@@ -60,7 +62,6 @@ public class GameManager : MonoBehaviour,IObserver
        
         initGridData();
         ChangeState(input);
-        
 
 
         /*        gridManager.GenerateGrid();

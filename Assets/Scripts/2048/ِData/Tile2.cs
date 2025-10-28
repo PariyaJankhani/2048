@@ -4,50 +4,43 @@ using NUnit.Framework;
 using System.Collections.Generic;
 public class Tile2 : MonoBehaviour
 {
-    public Vector3 targetPosition;
-    float duration = 0.5f;
+    public Vector2Int targetPosition =new Vector2Int();
+
+
+    //public void Move()
+    //{
+
+        //if (Input.GetKeyDown(KeyCode.DownArrow))
+        //{
+        //    Debug.Log("down!");
+            
+
+        //}
 
 
 
-    private void Awake()
-    {
-        EventBroker.instance.OnNumberMove += Move;
-    }
+        //else if (Input.GetKeyDown(KeyCode.UpArrow))
+        //{
+        //    Debug.Log("up");
 
-    private void Move()
-    {
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            Debug.Log("down!");
-            LeanTween.moveY(gameObject, transform.position.y,duration);
-
-        }
+        //}
 
 
 
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            Debug.Log("up");
+        //else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        //{
+        //    Debug.Log("left!");
 
 
-        }
+        //}
 
+        //else if (Input.GetKeyDown(KeyCode.RightArrow))
+        //{
+        //    Debug.Log("right!");
 
-
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            Debug.Log("left!");
-
-
-        }
-
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Debug.Log("right!");
-
-        }
-    }
+        //}
+    //}
 
 }
 
