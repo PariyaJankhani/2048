@@ -69,33 +69,41 @@ public class ProcessPosibleMoves: BaseStates
             int m = 0;
           
 
-                for (int y = 0; y != size; y++)
+                for (int y=0; y != size; y++)
 
                 {
                     GridData currentTile = manage.gridList[x, y];
 
-                    if (currentTile.tile2!=null)
-                    {
-                        currentTile.tile2.targetPosition = new Vector2Int(x, y);
-
-                        currentTile.gridPosition= new Vector3(x, y, 0);
-
-                        Debug.Log($"Tile2{currentTile.tile2.name}moved to :{x},{y}");
-
-                        
-                    }
-                    else
-                    {
-                        Debug.Log($"Empty cell at :{x}, {y}");
-                    }
+                if (currentTile.tile2 != null)
+                {
+                    currentTile.tile2.targetPosition = new Vector2Int(x, m);
 
 
-                    
+
+                //currentTile.gridPosition = new Vector3(x, m, 0);
+                manage.gridList[x, m] = new GridData
+                {
+                    gridPosition = new Vector3(x, m, 0),
+                };
+
+                manage.gridList[x, m] = currentTile;
+                    manage.gridList[x, y] = null;
+                    //m++;
+
+
+
+                    Debug.Log($"Tile2{manage.gridList[x,m]}moved to :{x},{m}");
 
 
                 }
+                //else
+                //{
+                //    Debug.Log($"Empty cell at :{x}, {y}");
+                //}
 
-         
+
+
+            }
 
 
 
@@ -158,15 +166,17 @@ public class ProcessPosibleMoves: BaseStates
 
 
         }
+
         manage.ChangeState(manage.movingBlocks);
-        //manage.movingBlocks.OnEnter(manage);
+        manage.movingBlocks.OnEnter(manage);
 
 
-  
+
     }
 
 
-}
+    }
+    
 
 
 
