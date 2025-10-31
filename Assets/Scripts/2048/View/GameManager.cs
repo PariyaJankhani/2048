@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour,IObserver
 
     public MoveDirection currentDirection;
 
-
+     
     //------------------
     public  GameManager instance { get; private set; }
     /*    [SerializeField] public GridManager gridManager;
@@ -51,8 +51,7 @@ public class GameManager : MonoBehaviour,IObserver
     public void Awake()
     {
         instance = this;
-        
-
+       
     }
 
     public void Start()
@@ -62,7 +61,14 @@ public class GameManager : MonoBehaviour,IObserver
        
         initGridData();
         ChangeState(input);
-
+        if (Tile2prefab == null)
+        {
+            Debug.Log("tile2 is null at start");
+        }
+        else
+        {
+            Debug.Log($"tile2 assigned to{tilePrefab.name}");
+        }
 
         /*        gridManager.GenerateGrid();
 
@@ -133,12 +139,19 @@ public class GameManager : MonoBehaviour,IObserver
         Vector2Int pos = emptyPositions[randomIndex];
         logicalgrid[pos.x, pos.y] = 1;
         Tile2 tile = Instantiate(Tile2prefab, new Vector3(pos.x, pos.y), Quaternion.identity);
-        gridList[pos.x, pos.y] = new GridData
-        {
-            tile2 = tile
-        };
-        
-        
+        //Tile2prefab.targetPosition = new Vector2Int(pos.x, pos.y);
+
+        //gridList[pos.x, pos.y] = new GridData();
+        GridData data = new GridData();
+        gridList[pos.x, pos.y] = data;
+        tile.GridData = data;
+        gridList[pos.x, pos.y].tile2 = tile;
+        //{
+        //    tile2 = tile
+        //};
+        gridList[pos.x, pos.y].tile2 = tile;
+
+
         // رفتن به استیت wait for input
         // ساخت enum برای جهت های input 
 
@@ -150,7 +163,7 @@ public class GameManager : MonoBehaviour,IObserver
 
         // و ذخیره مقدار
         // enum
-         
+
         //done--
 
         // و رفتن به استیت process possible moves
