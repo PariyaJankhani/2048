@@ -22,87 +22,34 @@ public class ProcessPosibleMoves: BaseStates
     {
         int size = manage.gridList.GetLength(0);
 
-        //int startX, endX, stepx;
-        //int startY, endY, stepy;
-        //if (manage.currentDirection == MoveDirection.Right)
-        //{
-        //    startX = size - 2;
-        //    endX = -1;
-        //    stepx = -1;
-        //}
-        //else if(manage.currentDirection == MoveDirection.Left)
-        //{
-        //    startX = 1;
-        //    endX = size;
-        //    stepx = 1;
-        //}
-        //else
-        //{
-        //    startX = 1;
-        //    endX = size;
-        //    stepx = 1;
-        //}
-
-        //if (manage.currentDirection == MoveDirection.Down)
-        //{
-        //    startY = size - 2;
-        //    endY = -1;
-        //    stepy = -1;
-        //}
-        //else if(manage.currentDirection == MoveDirection.Up)
-        //{
-        //    startY = 1;
-        //    endY= size;
-        //    stepy = 1;
-        //}
-        //else
-        //{
-        //    startY = 1;
-        //    endY = size;
-        //    stepy = 1;
-        //}
-
-
         for (int x = 0; x != size; x++)
 
         {
             int m = 0;
-          
-
-                for (int y=0; y != size; y++)
-
-                {
-                    GridData currentTile = manage.gridList[x, y];
-
-                if (currentTile == null || currentTile.tile2 == null)
-                {
-                    continue;
-                }
-
-                //if (currentTile.tile2 != null)
-                //{
-             
-                //    //currentTile.gridPosition = new Vector3(x, m, 0);
-                //    manage.gridList[x, m] = new GridData
-                //    {
-                //        gridPosition = new Vector3(x, m, 0),
-                //    };
-                   
-                    manage.gridList[x, m] = currentTile;
-                    manage.gridList[x, y] = null;
-                    //m++;
-                     
-                      currentTile.tile2 = currentTile.tile2.GetComponent<Tile2>();
-                    currentTile.tile2.targetPosition = new Vector3(x, m);
-
-                    Debug.Log($"Tile2{manage.gridList[x,m]}moved to :{x},{m}");
 
 
-                //}
-                //else
-                //{
-                //    Debug.Log($"Empty cell at :{x}, {y}");
-                //}
+            for (int y = m ; y != size; y++)
+
+            {
+               
+                GridData currentTile = manage.gridList[x, y];
+                Debug.Log($"{x},{m}");
+               
+                    if (currentTile == null || currentTile.tile2 == null)
+                    {
+                        continue;
+
+                    }
+
+                manage.gridList[x, m] = currentTile;
+                manage.gridList[x, y] = null;
+                Debug.Log($"{x},{m}");
+
+                currentTile.tile2 = currentTile.tile2.GetComponent<Tile2>();
+                currentTile.tile2.moveAmount = new Vector3(x, m);
+                Debug.Log($"Tile2{manage.gridList[x, m]}moved to :{x},{m}");
+
+                m++;
 
 
 
@@ -172,13 +119,14 @@ public class ProcessPosibleMoves: BaseStates
 
         manage.ChangeState(manage.movingBlocks);
         manage.movingBlocks.OnEnter(manage);
+       
 
 
 
     }
 
 
-    }
+}
     
 
 

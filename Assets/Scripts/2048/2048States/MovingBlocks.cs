@@ -27,11 +27,19 @@ public class MovingBlocks : BaseStates
                     {
                         
                         manage.gridList[x, y].tile2.Move();
+                        manage.gridList[x, y] = new GridData
+                        {
+                            gridPosition = new Vector3(x, y)
+                        };
+
                     }
                 }
             }
        
+       
         }
+        manage.instanse();
+
     }
 
 

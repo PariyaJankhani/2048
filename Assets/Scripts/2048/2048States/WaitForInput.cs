@@ -48,6 +48,8 @@ public class WaitForInput : BaseStates
             manage.posibleMoves.OnEnter(manage);
 
             Debug.Log("down is pressed!");
+
+            
         }
 
         else if (Input.GetKeyDown(KeyCode.LeftArrow))

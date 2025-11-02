@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour,IObserver
         */
        
         initGridData();
+       
         ChangeState(input);
         if (Tile2prefab == null)
         {
@@ -149,7 +150,6 @@ public class GameManager : MonoBehaviour,IObserver
         //{
         //    tile2 = tile
         //};
-        gridList[pos.x, pos.y].tile2 = tile;
 
 
         // رفتن به استیت wait for input
@@ -171,7 +171,40 @@ public class GameManager : MonoBehaviour,IObserver
 
     }
 
+    public void instanse()
+    {
+        int[,] logicalgrid = new int[Gridx, Gridy];
+        List<Vector2Int> emptyPositions = new List<Vector2Int>();
 
+        for (int x = 0; x < Gridx; x++)
+        {
+            for (int y = 0; y < Gridy; y++)
+            {
+
+                if (logicalgrid[x, y] == 0)
+                {
+                    emptyPositions.Add(new Vector2Int(x, y));
+                }
+            }
+        }
+
+        if (emptyPositions.Count == 0)
+        {
+            Debug.Log("No empty spots left. Game Over check needed.");
+            return;
+        }
+
+        int randomIndex = UnityEngine.Random.Range(0, emptyPositions.Count);
+        Vector2Int pos = emptyPositions[randomIndex];
+        logicalgrid[pos.x, pos.y] = 1;
+        Tile2 tile = Instantiate(Tile2prefab, new Vector3(pos.x, pos.y), Quaternion.identity);
+
+        GridData data = new GridData();
+        gridList[pos.x, pos.y] = data;
+        tile.GridData = data;
+        gridList[pos.x, pos.y].tile2 = tile;
+
+    }
     public void ChangeState(BaseStates newState)
     {
 

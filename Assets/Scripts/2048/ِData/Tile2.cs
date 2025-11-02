@@ -8,7 +8,7 @@ public class Tile2 : MonoBehaviour
     Transform move;
     GameManager gameManager;
     //public Vector3 targetPosition;
-    public Vector3 targetPosition;
+    public Vector3 moveAmount;
     public GridData GridData;
 
     private void Start()
@@ -21,7 +21,7 @@ public class Tile2 : MonoBehaviour
 
         //targetPosition = GridData.gridPosition;
         //LeanTween.move(gameObject,GridData.gridPosition, 0.5f).setEaseInOutQuad(); 
-        Vector3 finalPos = new Vector3(targetPosition.x, targetPosition.y, 0);
+        Vector3 finalPos = new Vector3(moveAmount.x, moveAmount.y, 0);
         LeanTween.move( gameObject,finalPos, 0.5f).setEaseInOutQuad();
         //LeanTween.move(gameObject,, 0.5f).setEaseInOutQuad();
         Debug.Log(GridData.gridPosition);
